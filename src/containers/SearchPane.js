@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { updateQueryString } from '../actions/SearchActions';
 
 
 class SearchPane extends Component {
   render() {
     return (
       <div className="columns six">
-        This is search Pane
+        { this.props.search.queryString }
+        <input
+          onChange={(e) => {
+            this.props.updateQueryString(e.target.value)
+          }}
+          value={this.props.search.queryString}
+        />
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    search: state.search
+  };
+};
 
-export default SearchPane;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateQueryString: bindActionCreators(updateQueryString, dispatch)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchPane);
+
