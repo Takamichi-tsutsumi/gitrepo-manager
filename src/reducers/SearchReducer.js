@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import * as Actions from '../actions/SearchActions';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   queryString: '',
   resultList: [],
 };
