@@ -8,7 +8,6 @@ import axios from 'axios';
 import App from './containers/App';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css';
 
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));

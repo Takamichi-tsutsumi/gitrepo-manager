@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchPane from './SearchPane';
 import WatchPane from './WatchPane';
-import './App.css';
 
 class App extends Component {
   render() {
