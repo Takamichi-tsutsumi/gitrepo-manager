@@ -9,8 +9,8 @@ describe('SearchReducer', () => {
   it('should handle updateQueryString', () => {
     expect(reducer(INITIAL_STATE, actions.updateQueryString('a')))
       .toEqual({
-        queryString: 'a',
-        resultList: []
+        ...INITIAL_STATE,
+        queryString: 'a'
       });
   });
 
