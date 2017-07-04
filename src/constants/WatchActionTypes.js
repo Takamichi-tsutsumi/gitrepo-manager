@@ -1,3 +1,4 @@
-import { createAction } from 'redux-actions';
-
+export const FETCH_WATCH_REPOS_START = 'FETCH_WATCH_REPOS_START';
+export const FETCH_WATCH_REPOS_SUCCESS = 'FETCH_WATCH_REPOS_SUCCESS';
+export const FETCH_WATCH_REPOS_FAIL = 'FETCH_WATCH_REPOS_FAIL';
 

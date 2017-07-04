@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { SearchReducer as search } from './SearchReducer';
+import search from './SearchReducer';
+import watch from './WatchReducer';
 
 const reducers = combineReducers({
-  search
+  search,
+  watch,
 });
 
 export default reducers;

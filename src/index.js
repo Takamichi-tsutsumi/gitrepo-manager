@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger'
+import axios from 'axios';
 import App from './containers/App';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
@@ -11,6 +12,9 @@ import './index.css';
 
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));
+
+// configure axios header here
+axios.defaults.headers.common['Authorization'] = `token ${process.env.REACT_APP_API_TOKEN}`;
 
 
 ReactDOM.render(
@@ -20,3 +24,4 @@ ReactDOM.render(
   , document.getElementById('root')
 );
 registerServiceWorker();
+

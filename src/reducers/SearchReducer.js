@@ -6,10 +6,12 @@ const INITIAL_STATE = {
   resultList: [],
 };
 
-export const SearchReducer = handleActions({
+const SearchReducer = handleActions({
   [Actions.updateQueryString]: (state, action) => ({
     ...state,
     queryString: action.payload
   }),
 }, INITIAL_STATE);
+
+export default SearchReducer;
 
