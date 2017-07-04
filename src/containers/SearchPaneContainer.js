@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import SearchPane from '../components/SearchPane';
 import { updateQueryString } from '../actions/SearchActions';
 
 
-class SearchPane extends Component {
+class SearchPaneContainer extends Component {
   render() {
     return (
-      <div className="columns six">
-        { this.props.search.queryString }
-        <input
-          onChange={(e) => {
-            this.props.updateQueryString(e.target.value)
-          }}
-          value={this.props.search.queryString}
-        />
-      </div>
+      <SearchPane
+        queryString={this.props.search.queryString}
+        updateQueryString={this.props.updateQueryString}
+      />
     );
   }
 }
@@ -35,5 +31,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchPane);
+)(SearchPaneContainer);
 
