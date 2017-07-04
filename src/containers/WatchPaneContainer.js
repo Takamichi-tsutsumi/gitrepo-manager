@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import WatchPane from '../components/WatchPane';
 import { fetchWatchRepos } from '../actions/WatchActions';
 
 
-class WatchPane extends Component {
+class WatchPaneContainer extends Component {
   componentWillMount() {
-    // start fetching watch repos
-    console.log('Start fetching');
     this.props.fetchWatchRepos();
-
   }
 
   render() {
     return (
-      <div className="columns six">
-        <ul>
-          {
-            this.props.watch.repositories.map(repo => {
-              return <li key={repo.id}>{repo.full_name}</li>;
-            })
-          }
-        </ul>
-      </div>
+      <WatchPane
+        repositories={this.props.watch.repositories}
+      />
     );
   }
 }
@@ -43,5 +35,5 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(WatchPane);
+)(WatchPaneContainer);
 

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import SearchPane from './SearchPane';
-import WatchPane from './WatchPane';
+import SearchPaneContainer from './SearchPaneContainer';
+import WatchPaneContainer from './WatchPaneContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App container">
         <div className="row">
-          <SearchPane />
-          <WatchPane />
+          <SearchPaneContainer />
+          <WatchPaneContainer />
         </div>
       </div>
     );
