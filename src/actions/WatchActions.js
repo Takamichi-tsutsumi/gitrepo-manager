@@ -11,7 +11,7 @@ export const fetchWatchRepos = () => {
   return dispatch => {
     dispatch(fetchWatchReposStart());
 
-    axios.get(`${apiRoot}/user/subscriptions`)
+    return axios.get(`${apiRoot}/user/subscriptions`)
       .then(res => {
         dispatch(fetchWatchReposSuccess(res.data));
       })
