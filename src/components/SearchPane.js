@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import { Input } from './common';
+import { Input, SearchListItem } from './common';
 
 class SearchPane extends Component  {
   constructor(props) {
@@ -20,19 +20,26 @@ class SearchPane extends Component  {
   render() {
     return (
       <div className="column">
-        <Input
-          isLoading={this.props.isLoading}
-          queryString={this.props.queryString}
-          onFinishEditing={this.props.onFinishEditing}
-          onChange={this.onChange}
-        />
-       <ul>
+        <nav className="panel">
+          <p className="panel-heading">Search Repositories</p>
+          <div className="panel-block">
+            <Input
+              isLoading={this.props.isLoading}
+              queryString={this.props.queryString}
+              onFinishEditing={this.props.onFinishEditing}
+              onChange={this.onChange}
+            />
+          </div>
           {
             this.props.repositories.map(repo => {
-              return <li key={repo.id}>{repo.full_name}</li>
+              return <SearchListItem
+                key={repo.id}
+                title={repo.full_name}
+                onButtonPress={() => this.props.onSubscribe(repo.subscription_url)}
+              />
             })
           }
-        </ul>
+        </nav>
       </div>
     );
   }
@@ -45,6 +52,7 @@ SearchPane.propTypes = {
   onClear: PropTypes.func,
   repositories: PropTypes.arrayOf(Object).isRequired,
   isLoading: PropTypes.bool,
+  onSubscribe: PropTypes.func.isRequired
 };
 
 export default SearchPane;

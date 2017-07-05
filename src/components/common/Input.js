@@ -15,7 +15,7 @@ const Input = props => {
     }, 500);
   };
 
-  return <p className={`control${props.isLoading ? ' is-loading' : ''}`}>
+  return <p className={`control has-icons-left${props.isLoading ? ' is-loading' : ''}`}>
     <input
       type={'text'}
       className={'input'}
@@ -24,6 +24,9 @@ const Input = props => {
       onChange={props.onChange}
       onKeyUp={finishEditing}
     />
+    <span className="icon is-small is-left">
+      <i className="fa fa-search"></i>
+    </span>
   </p>;
 };
 

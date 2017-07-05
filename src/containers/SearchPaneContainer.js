@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchPane from '../components/SearchPane';
 import { searchRepos, updateQueryString, clearResult } from '../actions/SearchActions';
+import { subscribeRepoAsync } from '../actions/WatchActions';
 
 
 class SearchPaneContainer extends Component {
@@ -15,6 +16,7 @@ class SearchPaneContainer extends Component {
         onInputChange={this.props.updateQueryString}
         onFinishEditing={this.props.searchRepos}
         onClear={this.props.clearResult}
+        onSubscribe={this.props.subscribeRepoAsync}
       />
     );
   }
@@ -31,6 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     searchRepos: bindActionCreators(searchRepos, dispatch),
     updateQueryString: bindActionCreators(updateQueryString, dispatch),
     clearResult: bindActionCreators(clearResult, dispatch),
+    subscribeRepoAsync: bindActionCreators(subscribeRepoAsync, dispatch),
   };
 };
 

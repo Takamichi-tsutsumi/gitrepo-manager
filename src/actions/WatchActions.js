@@ -21,3 +21,23 @@ export const fetchWatchRepos = () => {
   }
 };
 
+
+export const subscribeRepoStart = createAction(types.SUBSCRIBE_REPO_START);
+export const subscribeRepoSuccess = createAction(types.SUBSCRIBE_REPO_SUCCESS);
+export const subscribeRepoFail = createAction(types.SUBSCRIBE_REPO_FAIL);
+
+export const subscribeRepoAsync = (subscriptionURL) => {
+  return dispatch => {
+    dispatch(subscribeRepoStart());
+
+    return axios.put(subscriptionURL, {subscribed: true})
+      .then(res => {
+        dispatch(subscribeRepoSuccess());
+      })
+      .catch(err => {
+        dispatch(subscribeRepoFail(err));
+      });
+  }
+}
+
+
