@@ -23,6 +23,7 @@ class SearchPane extends Component  {
         <Input
           isLoading={this.props.isLoading}
           queryString={this.props.queryString}
+          onFinishEditing={this.props.onFinishEditing}
           onChange={this.onChange}
         />
        <ul>
@@ -40,6 +41,7 @@ class SearchPane extends Component  {
 SearchPane.propTypes = {
   queryString: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onFinishEditing: PropTypes.func.isRequired,
   onClear: PropTypes.func,
   repositories: PropTypes.arrayOf(Object).isRequired,
   isLoading: PropTypes.bool,

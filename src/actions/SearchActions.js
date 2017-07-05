@@ -12,9 +12,8 @@ export const searchReposFail = createAction(types.SEARCH_REPOS_FAIL, data => dat
 export const clearResult = createAction(types.CLEAR_RESULT);
 
 
-export const updateQuery = (query) => {
+export const searchRepos = (query) => {
   return (dispatch, getState) => {
-    dispatch(updateQueryString(query));
     dispatch(searchReposStart());
 
     return axios.get(`${apiRoot}/search/repositories?q=${query}`)

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchPane from '../components/SearchPane';
-import { updateQuery, clearResult } from '../actions/SearchActions';
+import { searchRepos, updateQueryString, clearResult } from '../actions/SearchActions';
 
 
 class SearchPaneContainer extends Component {
@@ -12,7 +12,8 @@ class SearchPaneContainer extends Component {
         repositories={this.props.search.resultList}
         queryString={this.props.search.queryString}
         isLoading={this.props.search.isLoading}
-        onInputChange={this.props.updateQuery}
+        onInputChange={this.props.updateQueryString}
+        onFinishEditing={this.props.searchRepos}
         onClear={this.props.clearResult}
       />
     );
@@ -27,7 +28,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateQuery: bindActionCreators(updateQuery, dispatch),
+    searchRepos: bindActionCreators(searchRepos, dispatch),
+    updateQueryString: bindActionCreators(updateQueryString, dispatch),
     clearResult: bindActionCreators(clearResult, dispatch),
   };
 };
