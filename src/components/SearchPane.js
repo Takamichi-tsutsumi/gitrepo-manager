@@ -10,7 +10,6 @@ class SearchPane extends Component  {
 
   onChange(e) {
     if (e.target.value !== '') {
-      this.props.updateQueryString(e.target.value);
       this.props.onInputChange(e.target.value);
     } else {
       this.props.onClear();
@@ -40,7 +39,6 @@ class SearchPane extends Component  {
 };
 
 SearchPane.propTypes = {
-  updateQueryString: PropTypes.func.isRequired,
   queryString: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onClear: PropTypes.func,

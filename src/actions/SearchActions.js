@@ -11,14 +11,19 @@ export const searchReposFail = createAction(types.SEARCH_REPOS_FAIL, data => dat
 
 export const clearResult = createAction(types.CLEAR_RESULT);
 
-export const searchRepos = (queryString) => {
 
-  return dispatch => {
+export const updateQuery = (query) => {
+  return (dispatch, getState) => {
+    dispatch(updateQueryString(query));
     dispatch(searchReposStart());
 
-    return axios.get(`${apiRoot}/search/repositories?q=${queryString}`)
+    return axios.get(`${apiRoot}/search/repositories?q=${query}`)
       .then(res => {
-        dispatch(searchReposSuccess(res.data.items));
+        // check latest queryString
+        const { queryString } = getState().search;
+        if (query === queryString) {
+          dispatch(searchReposSuccess(res.data.items));
+        }
       })
       .catch(err => {
         dispatch(searchReposFail(err));
