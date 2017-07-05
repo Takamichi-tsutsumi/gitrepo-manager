@@ -5,8 +5,8 @@ import WatchPaneContainer from './WatchPaneContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App container">
-        <div className="row">
+      <div className="section">
+        <div className="columns">
           <SearchPaneContainer />
           <WatchPaneContainer />
         </div>

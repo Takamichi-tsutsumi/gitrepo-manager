@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 const WatchPane = (props) => {
   return (
-    <div className="columns six">
+    <div className="column is-half">
       <ul>
         {
           props.repositories.map(repo => {

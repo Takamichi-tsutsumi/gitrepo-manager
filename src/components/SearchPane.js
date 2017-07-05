@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import { Input } from './common';
 
 class SearchPane extends Component  {
   constructor(props) {
@@ -18,15 +19,13 @@ class SearchPane extends Component  {
 
   render() {
     return (
-      <div className="columns six">
-        <input
-          type={'search'}
-          className={'u-full-width'}
-          placeholder={'search repositories...'}
-          value={this.props.queryString}
+      <div className="column">
+        <Input
+          isLoading={this.props.isLoading}
+          queryString={this.props.queryString}
           onChange={this.onChange}
         />
-        <ul>
+       <ul>
           {
             this.props.repositories.map(repo => {
               return <li key={repo.id}>{repo.full_name}</li>
@@ -43,6 +42,7 @@ SearchPane.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onClear: PropTypes.func,
   repositories: PropTypes.arrayOf(Object).isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default SearchPane;

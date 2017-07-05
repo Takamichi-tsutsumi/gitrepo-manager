@@ -11,6 +11,7 @@ class SearchPaneContainer extends Component {
       <SearchPane
         repositories={this.props.search.resultList}
         queryString={this.props.search.queryString}
+        isLoading={this.props.search.isLoading}
         onInputChange={this.props.updateQuery}
         onClear={this.props.clearResult}
       />
