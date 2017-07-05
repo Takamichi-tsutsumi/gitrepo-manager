@@ -14,17 +14,19 @@ const SearchReducer = handleActions({
     queryString: action.payload
   }),
   [Actions.searchReposStart]: (state) => ({
+    ...state,
     isLoading: true,
     error: null,
-    ...state,
   }),
   [Actions.searchReposSuccess]: (state, action) => ({
     ...state,
+    isLoading: false,
     resultList: action.payload,
     error: null,
   }),
   [Actions.searchReposFail]: (state, action) => ({
     ...state,
+    isLoading: false,
     error: action.payload,
   }),
   [Actions.clearResult]: (state) => ({
